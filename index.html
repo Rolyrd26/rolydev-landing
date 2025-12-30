@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RolyDev | Desarrollo Web Profesional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset y estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .logo i {
+            font-size: 3rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .tagline {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        /* Secciones */
+        section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            color: #333;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        /* Servicios */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #667eea;
+        }
+
+        /* Proceso */
+        .process-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .step {
+            text-align: center;
+            max-width: 250px;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+
+        /* Formulario */
+        .form-container {
+            background: white;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: #667eea;
+            outline: none;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Testimonios */
+        .testimonial {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin: 30px auto;
+            max-width: 800px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .testimonial:before {
+            content: '"';
+            font-size: 8rem;
+            color: #667eea;
+            opacity: 0.1;
+            position: absolute;
+            top: -30px;
+            left: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a2e;
+            color: white;
+            padding: 60px 0 30px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .copyright {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* Animaciones */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease both;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .form-container {
+                padding: 30px 20px;
+            }
+            
+            .service-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header/Hero -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-code"></i>
+                <span>RolyDev</span>
+            </div>
+            <h1 class="fade-in">Transformo ideas en experiencias digitales</h1>
+            <p class="tagline">Desarrollo landing pages y sitios web que convierten visitantes en clientes</p>
+            <div style="margin-top: 40px;">
+                <a href="#contacto" class="submit-btn" style="width: auto; display: inline-block; padding: 15px 30px;">
+                    <i class="fas fa-paper-plane"></i> Solicitar presupuesto gratis
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Servicios -->
+        <section>
+            <h2 class="section-title">Mis Servicios</h2>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Landing Pages Profesionales</h3>
+                    <p>Diseño y desarrollo de páginas de aterrizaje optimizadas para conversión. Perfectas para campañas específicas.</p>
+                </div>
+                
+                <div class="service-card fade-in" style="animation-delay: 0.2s;">
+                    <div class="service-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>Tiendas Online</h3>
+                    <p>E-commerce completos con pasarelas de pago, gestión de inventario y diseño responsive.</p>
+                </div>
+                
+                <div class="service-card fade-in" style="animation-delay: 0.4s;">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Sitios Web Responsive</h3>
+                    <p>Webs que se ven perfectas en todos los dispositivos: móvil, tablet y escritorio.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Proceso de trabajo -->
+        <section>
+            <h2 class="section-title">Cómo Trabajo</h2>
+            <div class="process-steps">
+                <div class="step fade-in">
+                    <div class="step-number">1</div>
+                    <h3>Consulta Gratuita</h3>
+                    <p>Analizamos tus necesidades y objetivos para crear la mejor solución.</p>
+                </div>
+                
+                <div class="step fade-in" style="animation-delay: 0.2s;">
+                    <div class="step-number">2</div>
+                    <h3>Diseño y Desarrollo</h3>
+                    <p>Creo el diseño, desarrollo el sitio y optimizo para conversiones.</p>
+                </div>
+                
+                <div class="step fade-in" style="animation-delay: 0.4s;">
+                    <div class="step-number">3</div>
+                    <h3>Entrega y Soporte</h3>
+                    <p>Entrego el proyecto funcionando y ofrezco soporte post-entrega.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonio -->
+        <section>
+            <h2 class="section-title">Clientes Satisfechos</h2>
+            <div class="testimonial fade-in">
+                <p style="font-size: 1.2rem; font-style: italic; margin-bottom: 20px;">
+                    "Trabajar con Roly fue increíble. Transformó completamente nuestra presencia online. 
+                    La landing page que nos creó aumentó nuestras conversiones en un 40% en solo un mes. 
+                    Profesional, puntual y con resultados excepcionales."
+                </p>
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <div style="width: 60px; height: 60px; background: #667eea; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+                        M.G.
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 5px;">María González</h4>
+                        <p style="color: #666; font-size: 0.9rem;">Dueña de "Belleza Natural"</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Formulario de contacto -->
+        <section id="contacto">
+            <h2 class="section-title">¿Listo para comenzar?</h2>
+            <div class="form-container fade-in">
+                <form id="contactForm" netlify>
+                    <div class="form-group">
+                        <label for="name"><i class="fas fa-user"></i> Nombre completo *</label>
+                        <input type="text" id="name" name="name" required placeholder="Ej: Juan Pérez">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email"><i class="fas fa-envelope"></i> Correo electrónico *</label>
+                        <input type="email" id="email" name="email" required placeholder="tucorreo@ejemplo.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone"><i class="fas fa-phone"></i> Teléfono (opcional)</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+34 600 000 000">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service"><i class="fas fa-cog"></i> Tipo de proyecto *</label>
+                        <select id="service" name="service" required>
+                            <option value="" disabled selected>Selecciona una opción</option>
+                            <option value="landing">Landing Page</option>
+                            <option value="website">Sitio Web Corporativo</option>
+                            <option value="ecommerce">Tienda Online</option>
+                            <option value="other">Otro</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="budget"><i class="fas fa-euro-sign"></i> Presupuesto aproximado *</label>
+                        <select id="budget" name="budget" required>
+                            <option value="" disabled selected>Selecciona tu rango</option>
+                            <option value="500">300-500€</option>
+                            <option value="1000">500-1000€</option>
+                            <option value="2000">1000-2000€</option>
+                            <option value="3000">+2000€</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message"><i class="fas fa-comment"></i> Cuéntame sobre tu proyecto *</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="Describe lo que necesitas, objetivos, plazos, etc."></textarea>
+                    </div>
+                    
+                    <input type="hidden" name="form-name" value="contactForm">
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Enviar solicitud de presupuesto
+                    </button>
+                    
+                    <p style="text-align: center; margin-top: 20px; color: #666; font-size: 0.9rem;">
+                        <i class="fas fa-shield-alt"></i> Tu información está segura. Te responderé en menos de 24 horas.
+                    </p>
+                </form>
+                
+                <div id="successMessage" style="display: none; background: #d4edda; color: #155724; padding: 20px; border-radius: 10px; text-align: center; margin-top: 20px;">
+                    <i class="fas fa-check-circle" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                    <h3>¡Mensaje enviado con éxito!</h3>
+                    <p>Te contactaré en menos de 24 horas. Revisa tu correo electrónico.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <h2 style="margin-bottom: 40px; font-size: 2rem;">Contacto</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>rolyroly2661@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+34 600 000 000</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Disponible para proyectos internacionales</span>
+                </div>
+            </div>
+            
+            <div style="margin: 40px 0;">
+                <h3 style="margin-bottom: 20px;">Conectemos en redes</h3>
+                <div style="display: flex; justify-content: center; gap: 20px; font-size: 1.5rem;">
+                    <a href="#" style="color: white;"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" style="color: white;"><i class="fab fa-github"></i></a>
+                    <a href="#" style="color: white;"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" style="color: white;"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2024 RolyDev. Todos los derechos reservados.</p>
+                <p>Especialista en desarrollo web y landing pages conversivas.</p>
+                <p style="margin-top: 10px; font-size: 0.8rem;">
+                    Esta landing page fue creada como demostración profesional.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Manejo del formulario
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simular envío (luego configuramos Netlify Forms)
+            const form = this;
+            const successMessage = document.getElementById('successMessage');
+            
+            // Mostrar loading
+            const submitBtn = form.querySelector('.submit-btn');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+            submitBtn.disabled = true;
+            
+            // Simular envío
+            setTimeout(() => {
+                // Aquí Netlify manejará el envío real
+                form.style.display = 'none';
+                successMessage.style.display = 'block';
+                
+                // Reset después de 5 segundos
+                setTimeout(() => {
+                    form.style.display = 'block';
+                    successMessage.style.display = 'none';
+                    form.reset();
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }, 5000);
+                
+                // Envío real con Netlify
+                fetch("/", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: new URLSearchParams(new FormData(form)).toString(),
+                }).then(() => {
+                    console.log("Formulario enviado a Netlify");
+                }).catch((error) => {
+                    console.error("Error:", error);
+                });
+                
+            }, 1500);
+        });
+        
+        // Animaciones al hacer scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+        
+        // Observar elementos para animar
+        document.querySelectorAll('.service-card, .step, .testimonial').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
